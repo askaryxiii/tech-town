@@ -1,0 +1,299 @@
+@import "tailwindcss";
+/* :root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #ffffff;
+    background-color: #282828;
+  }
+} */
+
+:root {
+  background-color: #f8f8f8;
+}
+
+/* drawer */
+.drawer-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+}
+
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.drawer-container:not(.closing) .drawer-backdrop {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.drawer-container.closing .drawer-backdrop {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+.drawer-panel {
+  transform: translateX(100%);
+  width: 75%;
+}
+
+.drawer-container:not(.closing) .drawer-panel {
+  animation: slideIn 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.drawer-container.closing .drawer-panel {
+  animation: slideOut 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.drawer-close-button {
+  position: absolute;
+  left: -40px;
+  top: 24px;
+  padding: 0.25rem;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.drawer-container:not(.closing) .drawer-close-button {
+  animation: slideInLeft 0.4s 0.1s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.drawer-container.closing .drawer-close-button {
+  animation: slideOutLeft 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.drawer-logo {
+  opacity: 0;
+}
+
+.drawer-container:not(.closing) .drawer-logo {
+  animation: fadeIn 0.5s 0.2s ease-out forwards;
+}
+
+.drawer-container.closing .drawer-logo {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .drawer-panel {
+    width: 85%;
+  }
+
+  .drawer-close-button {
+    left: -36px;
+    top: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .drawer-panel {
+    width: 100%;
+  }
+
+  .drawer-close-button {
+    left: 16px;
+    top: 16px;
+    border-radius: 50%;
+    padding: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .drawer-backdrop,
+  .drawer-panel,
+  .drawer-close-button,
+  .drawer-logo {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .drawer-container:not(.closing) .drawer-backdrop,
+  .drawer-container:not(.closing) .drawer-panel,
+  .drawer-container:not(.closing) .drawer-close-button,
+  .drawer-container:not(.closing) .drawer-logo {
+    opacity: 1;
+    transform: none;
+  }
+
+  .drawer-container.closing .drawer-backdrop,
+  .drawer-container.closing .drawer-panel,
+  .drawer-container.closing .drawer-close-button,
+  .drawer-container.closing .drawer-logo {
+    opacity: 0;
+  }
+}
+
+/* swiper */
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #444;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 640px) {
+  .swiper {
+  width: 100%;
+  height: 80svh;
+  }
+}
+
+/* loading page */
+.loading-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.animated-logo {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.text {
+  margin-top: 20px;
+  color: #ffffff;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  animation: fadeIn 2s infinite;
+}
+
+@keyframes fadeIn {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
