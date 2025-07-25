@@ -11,3 +11,4 @@ export { IconNavList } from "./buttuns/IconNavList";
 export { SearchBar } from "./inputs/SearchBar";
 export { HeroCarousel } from "./carousels/HeroCarousel";
 export { CustomSwiperSlide } from "./carousels/CustomSwiperSlide";
+export { CategoryCard } from "./cards/CategoryCard";
