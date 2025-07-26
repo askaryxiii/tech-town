@@ -11,7 +11,7 @@ const Home = () => {
     <section className="py-5 lg:px-10 p-5 flex flex-col gap-5">
       <HeroCarousel />
       {/* category Section */}
-      <section className="w-full grid lg:grid-cols-4 md:grid-cols-2 space-y-3 grid-cols-1 ">
+      <section className="w-full grid lg:grid-cols-4 md:grid-cols-2 space-y-4 grid-cols-1 ">
         {categories?.data.map(({ documentId, title, image }) => (
           <CategoryCard key={documentId} title={title} image={image} />
         ))}
