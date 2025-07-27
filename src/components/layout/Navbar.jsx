@@ -67,7 +67,11 @@ export const Navbar = () => {
             <div className="flex justify-evenly pr-2 pt-5">
               <IconNavList icon={<TbArrowsShuffle />} count={1} />
               <IconNavList icon={<RiHeartAdd2Line />} count={2} />
-              <IconNavList icon={<MdOutlineShoppingCart />} count={0} />
+              <IconNavList
+                icon={<MdOutlineShoppingCart />}
+                count={0}
+                dist={"/cart"}
+              />
             </div>
           </div>
         </Drawer>
