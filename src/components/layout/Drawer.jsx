@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
-
 const Drawer = ({ isOpen, setIsOpen, children }) => {
   const [isClosing, setIsClosing] = useState(false);
   const drawerRef = useRef(null);
@@ -75,29 +74,7 @@ const Drawer = ({ isOpen, setIsOpen, children }) => {
               className="drawer-panel pointer-events-auto relative w-full max-w-3xl">
               {/* Drawer content */}
               <div className="flex h-full flex-col bg-white shadow-xl border-l border-gray-200 px-6 py-8">
-                <div className="flex-1 overflow-y-auto">
-                  {children || (
-                    <div className="space-y-6">
-                      <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
-                        Drawer Content
-                      </h2>
-                      <p className="text-gray-600 dark:text-gray-300">
-                        This drawer has smooth opening and closing animations.
-                      </p>
-                      <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                        <p className="text-blue-700 dark:text-blue-300">
-                          Click anywhere outside the drawer or press Esc to
-                          close it
-                        </p>
-                      </div>
-                      <button
-                        className="w-full py-3 bg-gray-800 dark:bg-gray-700 text-white rounded-lg hover:bg-gray-900 transition-colors"
-                        onClick={closeDrawer}>
-                        Close Drawer
-                      </button>
-                    </div>
-                  )}
-                </div>
+                <div className="flex-1 overflow-y-auto">{children || null}</div>
               </div>
             </div>
           </div>

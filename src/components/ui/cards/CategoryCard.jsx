@@ -6,7 +6,7 @@ export const CategoryCard = ({ title, image }) => {
     <Link className="lg:w-[292px] md:w-[292px] h-[100px] group rounded-md overflow-hidden relative bg-gradient-to-br from-gray-100 to-gray-400 cursor-pointer transition-all duration-300">
       <img
         src={`${image?.url}`}
-        alt="Watches"
+        alt=""
         loading="lazy"
         className="absolute -left-24 h-full w-5/6 object-cover transition-opacity duration-300 group-hover:opacity-0"
       />

@@ -16,6 +16,7 @@ const Home = () => {
           <CategoryCard key={documentId} title={title} image={image} />
         ))}
       </section>
+      <button>click here</button>
     </section>
   );
 };

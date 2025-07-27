@@ -12,3 +12,8 @@ export { SearchBar } from "./inputs/SearchBar";
 export { HeroCarousel } from "./carousels/HeroCarousel";
 export { CustomSwiperSlide } from "./carousels/CustomSwiperSlide";
 export { CategoryCard } from "./cards/CategoryCard";
+export { CartCard } from "./cards/CartCard";
+export { ThreeXTitle } from "./spans/ThreeXTitle";
+export { CartCardImage } from "./imgs/CartCardImage";
+export { QuantityButtons } from "./buttuns/cart/QuantityButtons";
+export { BaseGraySpan } from "./spans/BaseGraySpan";

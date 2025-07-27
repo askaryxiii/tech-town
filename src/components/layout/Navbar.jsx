@@ -23,11 +23,15 @@ export const Navbar = () => {
           <SearchBar />
         </div>
 
-        {/* Notification and Avatar */}
+        {/* Navbar List */}
         <div className="hidden md:flex items-center space-x-8">
           <IconNavList icon={<TbArrowsShuffle />} count={1} />
           <IconNavList icon={<RiHeartAdd2Line />} count={2} />
-          <IconNavList icon={<MdOutlineShoppingCart />} count={0} />
+          <IconNavList
+            icon={<MdOutlineShoppingCart />}
+            count={0}
+            dist={"/cart"}
+          />
         </div>
       </div>
 
