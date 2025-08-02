@@ -8,9 +8,11 @@ import {
   ProductTitle,
 } from "../index";
 
-export const ProductCard = ({ name, price, images, documentId }) => {
+export const ProductCard = ({ name, price, images, documentId, specs }) => {
+  console.log(documentId);
+
   return (
-    <div className="bg-white max-w-75 min-h-80 max-h-100 rounded-2xl shadow-sm flex flex-col p-4 gap-2 group cursor-pointer">
+    <div className="bg-white max-w-75 md:h-fit lg:h-fit rounded-2xl shadow-sm flex flex-col p-4 gap-2 group cursor-pointer">
       <Link to={`/product/${documentId}`} className="flex flex-col gap-2.5">
         <ProductCardCarousel imgs={images} />
         <ProductTitle title={name} />
@@ -21,7 +23,12 @@ export const ProductCard = ({ name, price, images, documentId }) => {
         </span>
         <div className="absolute inset-0 transition-all duration-500 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 text-base font-medium ">
           <div className="flex justify-between">
-            <AddToCart />
+            <AddToCart
+              documentId={documentId}
+              title={name}
+              price={price}
+              specs={specs}
+            />
             <div className="flex gap-3">
               <FavIconButton />
               <CompareIconButton />

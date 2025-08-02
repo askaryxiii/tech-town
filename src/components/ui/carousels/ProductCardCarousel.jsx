@@ -12,14 +12,10 @@ export const ProductCardCarousel = ({ imgs }) => {
           hide: true,
         }}
         modules={[Scrollbar]}
-        className="mySwiper rounded-2xl">
+        className="mySwiper rounded-2xl max-h-80">
         {imgs.map((img, index) => (
           <SwiperSlide key={index}>
-            <img
-              className=""
-              loading="lazy"
-              src={`http://localhost:1337${img.url}`}
-            />
+            <img className="" loading="lazy" src={img.url} />
           </SwiperSlide>
         ))}
       </Swiper>
