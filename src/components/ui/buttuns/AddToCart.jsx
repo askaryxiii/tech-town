@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../../features/cart/cartSlice";
+import { IoCart } from "react-icons/io5";
 
 export const AddToCart = ({ documentId, title, price, specs }) => {
   const dispatch = useDispatch();
@@ -16,8 +17,9 @@ export const AddToCart = ({ documentId, title, price, specs }) => {
           })
         )
       }
-      className="uppercase cursor-pointer relative text-gray-600 hover:text-gray-700 after:bg-gray-700 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 transition-all duration-300">
-      Add To Cart
+      className="bg-[#2c2c2c] h-11 uppercase cursor-pointer text-white text-sm font-semibold rounded-xl flex justify-center items-center gap-3 col-span-7">
+      <IoCart className="w-5 h-5" />
+      Add to Cart
     </button>
   );
 };

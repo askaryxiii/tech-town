@@ -9,32 +9,27 @@ import {
 } from "../index";
 
 export const ProductCard = ({ name, price, images, documentId, specs }) => {
-  console.log(documentId);
-
   return (
-    <div className="bg-white max-w-75 md:h-fit lg:h-fit rounded-2xl shadow-sm flex flex-col p-4 gap-2 group cursor-pointer">
+    <div className="bg-white max-w-75 md:h-fit lg:h-fit rounded-2xl space-y-2 shadow-sm pb-4 pt-1.5 px-1.5">
+      {/* Image Section */}
       <Link to={`/product/${documentId}`} className="flex flex-col gap-2.5">
         <ProductCardCarousel imgs={images} />
-        <ProductTitle title={name} />
-      </Link>
-      <div className="relative h-8 ">
-        <span className="transition-all duration-500 transform translate-y-0 opacity-100 group-hover:-translate-y-4 group-hover:opacity-0 absolute inset-0 ">
-          <PriceTag price={price} />
-        </span>
-        <div className="absolute inset-0 transition-all duration-500 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 text-base font-medium ">
-          <div className="flex justify-between">
-            <AddToCart
-              documentId={documentId}
-              title={name}
-              price={price}
-              specs={specs}
-            />
-            <div className="flex gap-3">
-              <FavIconButton />
-              <CompareIconButton />
-            </div>
-          </div>
+        <div className="flex flex-col gap-0.5 px-3.5">
+          <ProductTitle title={name} />
+          <span className="">
+            <PriceTag price={price} />
+          </span>
         </div>
+      </Link>
+      <div className="grid grid-cols-7 space-x-2 space-y-2.5 px-2.5">
+        <CompareIconButton />
+        <FavIconButton />
+        <AddToCart
+          documentId={documentId}
+          title={name}
+          price={price}
+          specs={specs}
+        />
       </div>
     </div>
   );

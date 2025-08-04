@@ -57,6 +57,7 @@ export const Navbar = () => {
               <div className="flex flex-col gap-2">
                 {listItems.map((item) => (
                   <Link
+                    to={`/`}
                     key={item}
                     className=" text-xl px-2 py-1 rounded relative text-gray-600 hover:text-gray-700  bg-transparent hover:bg-gray-200 transition-all duration-300 focus:outline-none focus:text-gray-900 ">
                     {item}

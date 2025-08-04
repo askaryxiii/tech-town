@@ -15,7 +15,7 @@ export const ProductCardCarousel = ({ imgs }) => {
         className="mySwiper rounded-2xl max-h-80">
         {imgs.map((img, index) => (
           <SwiperSlide key={index}>
-            <img className="" loading="lazy" src={img.url} />
+            <img loading="lazy" src={img.url} />
           </SwiperSlide>
         ))}
       </Swiper>
