@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 export const Logo = () => {
   return (
-    <div className="flex items-center gap-3">
+    <Link to={"/"} className="flex items-center gap-3">
       <div className="bg-black rounded-xl p-3 w-12 h-12 flex items-center justify-center">
         <svg
           width="24"
@@ -37,6 +39,6 @@ export const Logo = () => {
           COMPUTER SERVICE
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

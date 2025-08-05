@@ -17,3 +17,4 @@ export { ThreeXTitle } from "./spans/ThreeXTitle";
 export { CartCardImage } from "./imgs/CartCardImage";
 export { QuantityButtons } from "./buttuns/cart/QuantityButtons";
 export { BaseGraySpan } from "./spans/BaseGraySpan";
+export { FooterListItem } from "./buttuns/footer/FooterListItem";
