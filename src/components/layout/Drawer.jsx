@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
-const Drawer = ({ isOpen, setIsOpen, children }) => {
-  const [isClosing, setIsClosing] = useState(false);
+const Drawer = ({ isOpen, isClosing, closeDrawer, children }) => {
   const drawerRef = useRef(null);
 
   // Handle click outside to close
@@ -39,14 +38,6 @@ const Drawer = ({ isOpen, setIsOpen, children }) => {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
-
-  const closeDrawer = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      setIsOpen(false);
-      setIsClosing(false);
-    }, 400); // Match animation duration
-  };
 
   if (!isOpen && !isClosing) return null;
 

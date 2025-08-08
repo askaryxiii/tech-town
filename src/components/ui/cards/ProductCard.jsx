@@ -29,6 +29,7 @@ export const ProductCard = ({ name, price, images, documentId, specs }) => {
           title={name}
           price={price}
           specs={specs}
+          images={images}
         />
       </div>
     </div>

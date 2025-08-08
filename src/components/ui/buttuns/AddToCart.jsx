@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../../../features/cart/cartSlice";
 import { IoCart } from "react-icons/io5";
 
-export const AddToCart = ({ documentId, title, price, specs }) => {
+export const AddToCart = ({ documentId, title, price, specs, images }) => {
   const dispatch = useDispatch();
 
   return (
@@ -14,6 +14,7 @@ export const AddToCart = ({ documentId, title, price, specs }) => {
             name: title,
             price: price,
             specs: specs,
+            images: images,
           })
         )
       }

@@ -8,7 +8,16 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 
 export const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const listItems = ["Home", "Shop All", "Orders", "Branches", "Our Polices"];
+
+  const closeDrawer = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsDrawerOpen(false);
+      setIsClosing(false);
+    }, 400); // Match animation duration
+  };
 
   return (
     <nav className="border-b border-gray-200 bg-white shadow-sm">
@@ -50,7 +59,12 @@ export const Navbar = () => {
       {/* Mobile Drawer */}
 
       {isDrawerOpen && (
-        <Drawer isOpen={isDrawerOpen} setIsOpen={setIsDrawerOpen}>
+        <Drawer
+          isOpen={isDrawerOpen}
+          setIsOpen={setIsDrawerOpen}
+          isClosing={isClosing}
+          setIsClosing={setIsClosing}
+          closeDrawer={closeDrawer}>
           <div className="flex flex-col h-full justify-between">
             <div className="flex flex-col gap-8">
               <SearchBar />
@@ -59,6 +73,7 @@ export const Navbar = () => {
                   <Link
                     to={`/`}
                     key={item}
+                    onClick={closeDrawer}
                     className=" text-xl px-2 py-1 rounded relative text-gray-600 hover:text-gray-700  bg-transparent hover:bg-gray-200 transition-all duration-300 focus:outline-none focus:text-gray-900 ">
                     {item}
                   </Link>
@@ -66,12 +81,21 @@ export const Navbar = () => {
               </div>
             </div>
             <div className="flex justify-evenly pr-2 pt-5">
-              <IconNavList icon={<TbArrowsShuffle />} count={1} />
-              <IconNavList icon={<RiHeartAdd2Line />} count={2} />
+              <IconNavList
+                icon={<TbArrowsShuffle />}
+                count={1}
+                onClickFun={closeDrawer}
+              />
+              <IconNavList
+                icon={<RiHeartAdd2Line />}
+                count={2}
+                onClickFun={closeDrawer}
+              />
               <IconNavList
                 icon={<MdOutlineShoppingCart />}
                 count={0}
                 dist={"/cart"}
+                onClickFun={closeDrawer}
               />
             </div>
           </div>

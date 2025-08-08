@@ -11,8 +11,16 @@ const Cart = () => {
         <div className="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
           <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
             <div className="space-y-5">
-              {items?.map(({ id, name, price, specs, quantity }) => (
-                <CartCard key={id} />
+              {items?.map(({ id, name, price, specs, quantity, images }) => (
+                <CartCard
+                  key={id}
+                  id={id}
+                  name={name}
+                  price={price}
+                  specs={specs}
+                  quantity={quantity}
+                  images={images}
+                />
               ))}
             </div>
             <div className="hidden xl:mt-8 lg:block">

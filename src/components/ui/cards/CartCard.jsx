@@ -1,14 +1,13 @@
-
 import { BaseGraySpan, CartCardImage, QuantityButtons } from "../index";
-export const CartCard = () => {
+export const CartCard = ({ name, price, specs, quantity, images, id }) => {
+  const specsDetails = "";
+  // specs.map(() => {
+  //   specsDetails
+  // });
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm  md:p-6">
+    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm md:px-6">
       <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
-        <CartCardImage
-          src={
-            "https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front-dark.svg"
-          }
-        />
+        <CartCardImage src={images[0].url} />
         <div className="flex items-center justify-evenly md:order-3 md:justify-end">
           <div className="flex items-center">
             <QuantityButtons
@@ -35,7 +34,7 @@ export const CartCard = () => {
               data-input-counter
               className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 "
               placeholder=""
-              value="2"
+              value={quantity}
               required
             />
             <QuantityButtons
@@ -58,16 +57,12 @@ export const CartCard = () => {
             />
           </div>
           <div className="text-end md:order-4 md:w-32">
-            <BaseGraySpan weigth={"bold"} text={"1,499"} />
+            <BaseGraySpan weigth={"bold"} text={price} />
           </div>
         </div>
 
-        <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-          <BaseGraySpan
-            weigth={"medium"}
-            text={` PC system All in One APPLE iMac (2023) mqrq3ro/a, Apple M3, 24"
-            Retina 4.5K, 8GB, SSD 256GB, 10-core GPU, Keyboard layout INT`}
-          />
+        <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md flex flex-col items-center lg:items-start ">
+          <BaseGraySpan weigth={"medium"} text={`${name} `} />
           <div className="flex items-center gap-4">
             <button
               type="button"

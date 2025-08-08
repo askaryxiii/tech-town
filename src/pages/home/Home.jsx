@@ -8,18 +8,18 @@ const Home = () => {
   const { data: categories } = useGetCategoriesQuery();
 
   return (
-    <div className="py-5 flex flex-col">
+    <div className=" flex flex-col">
       <section className="lg:px-10 p-5 py-5 flex flex-col gap-5 min-h-fit items-center">
         <HeroCarousel />
         {/* category Section */}
-        <section className="lg:w-2/3 w-full grid lg:grid-cols-3 md:grid-cols-2 space-y-4 grid-cols-1 ">
+        <section className="w-full grid lg:grid-cols-3 md:grid-cols-2 space-y-4 grid-cols-1 lg:justify-items-center">
           {categories?.data.map(({ documentId, title, image }) => (
             <CategoryCard key={documentId} title={title} image={image} />
           ))}
         </section>
       </section>
       {/* product section */}
-      <section className="grid lg:grid-cols-8 lg:grid-rows-10 justify-items-center px-4 sm:px-6 lg:px-0 py-5 ">
+      <section className="grid lg:grid-cols-8 lg:grid-rows-10 justify-items-center px-4 lg:gap-2.5 sm:px-6 lg:px-0 py-5 ">
         <div className="hidden lg:block row-start-1 row-end-11 col-start-1 col-end-2">
           <img src={homeImage} alt="" className="h-full object-cover" />
         </div>

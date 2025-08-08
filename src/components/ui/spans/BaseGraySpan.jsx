@@ -6,6 +6,6 @@ export const BaseGraySpan = ({ weigth, text }) => {
       <span className="text-base font-medium text-gray-900">{text}</span>
     </Link>
   ) : (
-    <span className="text-base font-bold text-gray-900">${text}</span>
+    <span className="text-base font-bold text-gray-900">E£ {text}</span>
   );
 };
