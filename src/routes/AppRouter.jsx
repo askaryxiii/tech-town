@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Navbar } from "../components/layout/Navbar";
 import Loading from "../pages/loading/Loading";
 import { Footer } from "../components/layout/Footer";
+import { ScrollToTop } from "../utils/ScrollToTop";
 
 const Home = lazy(() => import("../pages/home/Home"));
 const Product = lazy(() => import("../pages/product/Product"));
@@ -13,6 +14,7 @@ const AppRouter = () => {
     <BrowserRouter>
       <Suspense fallback={<Loading />}>
         <Navbar />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:documentId" element={<Product />} />

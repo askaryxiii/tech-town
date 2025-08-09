@@ -3,12 +3,16 @@ import {
   PriceTag,
   CompareIconButton,
   FavIconButton,
-  AddToCart,
+  CardButton,
   ProductCardCarousel,
   ProductTitle,
 } from "../index";
+import { IoCart } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../features/cart/cartSlice";
 
 export const ProductCard = ({ name, price, images, documentId, specs }) => {
+  const dispatch = useDispatch();
   return (
     <div className="bg-white max-w-75 md:h-fit lg:h-fit rounded-2xl space-y-2 shadow-sm pb-4 pt-1.5 px-1.5">
       {/* Image Section */}
@@ -24,12 +28,15 @@ export const ProductCard = ({ name, price, images, documentId, specs }) => {
       <div className="grid grid-cols-7 space-x-2 space-y-2.5 px-2.5">
         <CompareIconButton />
         <FavIconButton />
-        <AddToCart
+        <CardButton
+          text={"Add to Cart"}
+          icon={<IoCart className="w-5 h-5" />}
           documentId={documentId}
           title={name}
           price={price}
           specs={specs}
           images={images}
+          onClickFun={addToCart}
         />
       </div>
     </div>

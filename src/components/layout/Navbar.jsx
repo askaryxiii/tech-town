@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { HamburgerButton, IconNavList, Logo, SearchBar } from "../ui";
+import { HamburgerButton, IconNavBar, Logo, SearchBar } from "../ui";
 import Drawer from "./Drawer";
 import { Link } from "react-router-dom";
-import { RiHeartAdd2Line } from "react-icons/ri";
-import { TbArrowsShuffle } from "react-icons/tb";
-import { MdOutlineShoppingCart } from "react-icons/md";
+
+import { useSelector } from "react-redux";
 
 export const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const listItems = ["Home", "Shop All", "Orders", "Branches", "Our Polices"];
+  const items = useSelector((state) => state.cart.items);
 
   const closeDrawer = () => {
     setIsClosing(true);
@@ -26,24 +26,22 @@ export const Navbar = () => {
         <Logo />
         {/* Hamburger icon */}
         <HamburgerButton setIsOpen={setIsDrawerOpen} />
-
         {/* Search bar */}
         <div className="hidden md:flex flex-1 max-w-md mx-8">
           <SearchBar />
         </div>
-
         {/* Navbar List */}
-        <div className="hidden md:flex items-center space-x-8">
+        <IconNavBar items={items} closeDrawer={closeDrawer} hidden={true} />
+        {/* <div className="hidden md:flex items-center space-x-8">
           <IconNavList icon={<TbArrowsShuffle />} count={1} />
           <IconNavList icon={<RiHeartAdd2Line />} count={2} />
           <IconNavList
             icon={<MdOutlineShoppingCart />}
-            count={0}
+            count={items?.length}
             dist={"/cart"}
           />
-        </div>
+        </div> */}
       </div>
-
       {/* Desktop Nav Links */}
       <div className="hidden md:flex justify-center gap-10 pb-2">
         {listItems.map((item) => (
@@ -57,7 +55,6 @@ export const Navbar = () => {
       </div>
 
       {/* Mobile Drawer */}
-
       {isDrawerOpen && (
         <Drawer
           isOpen={isDrawerOpen}
@@ -80,7 +77,8 @@ export const Navbar = () => {
                 ))}
               </div>
             </div>
-            <div className="flex justify-evenly pr-2 pt-5">
+            <IconNavBar items={items} closeDrawer={closeDrawer} />
+            {/* <div className="flex justify-evenly pr-2 pt-5">
               <IconNavList
                 icon={<TbArrowsShuffle />}
                 count={1}
@@ -93,11 +91,11 @@ export const Navbar = () => {
               />
               <IconNavList
                 icon={<MdOutlineShoppingCart />}
-                count={0}
+                count={items?.length}
                 dist={"/cart"}
                 onClickFun={closeDrawer}
               />
-            </div>
+            </div> */}
           </div>
         </Drawer>
       )}

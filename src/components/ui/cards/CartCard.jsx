@@ -1,11 +1,15 @@
+import { removeFromCart } from "../../../features/cart/cartSlice";
 import { BaseGraySpan, CartCardImage, QuantityButtons } from "../index";
+import { useDispatch } from "react-redux";
+
 export const CartCard = ({ name, price, specs, quantity, images, id }) => {
+  const dispatch = useDispatch();
   const specsDetails = "";
   // specs.map(() => {
   //   specsDetails
   // });
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm md:px-6">
+    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm md:px-6 w-7/8">
       <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
         <CartCardImage src={images[0].url} />
         <div className="flex items-center justify-evenly md:order-3 md:justify-end">
@@ -87,7 +91,7 @@ export const CartCard = ({ name, price, specs, quantity, images, id }) => {
             </button>
 
             <button
-              type="button"
+              onClick={() => dispatch(removeFromCart(id))}
               className="inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500">
               <svg
                 className="me-1.5 h-5 w-5"
