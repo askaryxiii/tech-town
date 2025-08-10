@@ -1,13 +1,25 @@
-import { removeFromCart } from "../../../features/cart/cartSlice";
+import {
+  removeFromCart,
+  increaseQuatity,
+  decreaseQuatity,
+} from "../../../features/cart/cartSlice";
 import { BaseGraySpan, CartCardImage, QuantityButtons } from "../index";
 import { useDispatch } from "react-redux";
 
 export const CartCard = ({ name, price, specs, quantity, images, id }) => {
   const dispatch = useDispatch();
-  const specsDetails = "";
-  // specs.map(() => {
-  //   specsDetails
-  // });
+  const wantedSpecs = [
+    "Processor",
+    "Memory",
+    "Hard Disk",
+    "Graphic Card",
+    "Display Size",
+  ];
+  const line = `${name} ${specs
+    .filter((s) => wantedSpecs.includes(s.spec_name))
+    .map((s) => s.spec_value)
+    .join(" ")}`;
+
   return (
     <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm md:px-6 w-7/8">
       <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
@@ -31,16 +43,11 @@ export const CartCard = ({ name, price, specs, quantity, images, id }) => {
                   />
                 </svg>
               }
+              func={() => dispatch(decreaseQuatity(id))}
             />
-            <input
-              type="text"
-              id="counter-input"
-              data-input-counter
-              className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 "
-              placeholder=""
-              value={quantity}
-              required
-            />
+            <span className="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0">
+              {quantity}
+            </span>
             <QuantityButtons
               src={
                 <svg
@@ -58,15 +65,16 @@ export const CartCard = ({ name, price, specs, quantity, images, id }) => {
                   />
                 </svg>
               }
+              func={() => dispatch(increaseQuatity(id))}
             />
           </div>
           <div className="text-end md:order-4 md:w-32">
-            <BaseGraySpan weigth={"bold"} text={price} />
+            <BaseGraySpan weigth={"bold"} text={price * quantity} />
           </div>
         </div>
 
         <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md flex flex-col items-center lg:items-start ">
-          <BaseGraySpan weigth={"medium"} text={`${name} `} />
+          <BaseGraySpan weigth={"medium"} text={`${line} `} />
           <div className="flex items-center gap-4">
             <button
               type="button"

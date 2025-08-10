@@ -1,6 +1,9 @@
+import { useDispatch } from "react-redux";
+
 export const QuantityButtons = ({ src, func }) => {
   return (
     <button
+      onClick={func}
       type="button"
       id="decrement-button"
       data-input-counter-decrement="counter-input"

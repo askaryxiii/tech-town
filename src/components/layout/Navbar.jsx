@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HamburgerButton, IconNavBar, Logo, SearchBar } from "../ui";
 import Drawer from "./Drawer";
 import { Link } from "react-router-dom";
@@ -8,6 +8,10 @@ import { useSelector } from "react-redux";
 export const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  // const [isVisible, setIsVisible] = useState(true);
+  // const [lastScrollY, setLastScrollY] = useState(0);
+  // const [hasShadow, setHasShadow] = useState(false);
+  // const [isFloating, setIsFloating] = useState(false);
   const listItems = ["Home", "Shop All", "Orders", "Branches", "Our Polices"];
   const items = useSelector((state) => state.cart.items);
 
@@ -19,8 +23,38 @@ export const Navbar = () => {
     }, 400); // Match animation duration
   };
 
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const currentScrollY = window.scrollY;
+  //     const isMobile = window.innerWidth < 768;
+
+  //     if (isMobile) {
+  //       if (currentScrollY > lastScrollY && currentScrollY > 50) {
+  //         setIsVisible(false); // hide on scroll down
+  //       } else {
+  //         setIsVisible(true); // show on scroll up
+  //       }
+
+  //       setHasShadow(currentScrollY > 5);
+  //       setIsFloating(currentScrollY > 0); // make fixed only after scrolling
+
+  //       setLastScrollY(currentScrollY);
+  //     } else {
+  //       // Desktop always visible
+  //       setIsVisible(true);
+  //       setIsFloating(false);
+  //       setHasShadow(currentScrollY > 5);
+  //     }
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, [lastScrollY]);
+
   return (
-    <nav className="border-b border-gray-200 bg-white shadow-sm">
+    <nav
+      className={`border-b border-gray-200 bg-white z-50 transition-all duration-300 
+      `}>
       <div className="flex items-center justify-between px-4 py-4 md:px-20">
         {/* Logo */}
         <Logo />
@@ -78,27 +112,13 @@ export const Navbar = () => {
               </div>
             </div>
             <IconNavBar items={items} closeDrawer={closeDrawer} />
-            {/* <div className="flex justify-evenly pr-2 pt-5">
-              <IconNavList
-                icon={<TbArrowsShuffle />}
-                count={1}
-                onClickFun={closeDrawer}
-              />
-              <IconNavList
-                icon={<RiHeartAdd2Line />}
-                count={2}
-                onClickFun={closeDrawer}
-              />
-              <IconNavList
-                icon={<MdOutlineShoppingCart />}
-                count={items?.length}
-                dist={"/cart"}
-                onClickFun={closeDrawer}
-              />
-            </div> */}
           </div>
         </Drawer>
       )}
     </nav>
   );
 };
+
+// ${isFloating ? "fixed top-0 left-0 w-full" : ""}
+//         ${isVisible ? "translate-y-0" : "-translate-y-full"}
+//         ${hasShadow ? "shadow-md" : "shadow-none"}

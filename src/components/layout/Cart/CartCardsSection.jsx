@@ -8,9 +8,9 @@ export const CartCardsSection = ({ items }) => {
           <ImptyCard />
         </div>
       ) : (
-        items?.map(({ id, name, price, specs, quantity, images }) => (
+        items?.map(({ id, name, price, specs, quantity, images }, index) => (
           <CartCard
-            key={id}
+            key={index}
             id={id}
             name={name}
             price={price}
