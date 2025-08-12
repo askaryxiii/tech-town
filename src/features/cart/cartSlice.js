@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Bounce, toast } from "react-toastify";
 
 // Calculate total price from storedCart
 const calculateTotal = (cartItems) => {
@@ -31,16 +32,49 @@ const cartSlice = createSlice({
       }
       state.totalPrice = calculateTotal(state.items);
       localStorage.setItem("cartItems", JSON.stringify(state.items));
+      toast.success("Added to cart 👍", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     },
     removeFromCart: (state, action) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
       state.totalPrice = calculateTotal(state.items);
       localStorage.setItem("cartItems", JSON.stringify(state.items));
+      toast.error("Removed from cart 😤", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     },
     clearCart: (state) => {
       state.items = [];
       state.totalPrice = 0;
       localStorage.setItem("cartItems", JSON.stringify(state.items));
+      toast.error("All cleared 😤", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     },
     increaseQuatity: (state, action) => {
       const id = action.payload;

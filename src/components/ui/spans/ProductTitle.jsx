@@ -1,5 +1,5 @@
 import React from "react";
 
 export const ProductTitle = ({ title }) => {
-  return <span className="text-base font-medium">{title}</span>;
+  return <span className="text-base font-medium line-clamp-3">{title}</span>;
 };
