@@ -12,7 +12,8 @@ export const productsApiSlice = createApi({
         "products?populate[images][fields][0]=url&populate[specs][populate]=*",
     }),
     getSingleProduct: builder.query({
-      query: (id) => `products/${id}`,
+      query: (id) =>
+        `products/${id}?populate[images][fields][0]=url&populate[specs][populate]=*`,
     }),
   }),
 });

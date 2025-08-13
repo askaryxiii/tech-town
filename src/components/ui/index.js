@@ -23,6 +23,8 @@ export { DescriptionTerm } from "./spans/DescriptionTerm";
 export { DescriptionDetails } from "./spans/DescriptionDetails";
 export { DescriptionList } from "./spans/DescriptionList";
 export { LinkArrow } from "./illustrator/LinkArrow";
+export { ImageLoadingSkeleton } from "./illustrator/ImageLoadingSkeleton";
+export { BaseGray600 } from "./spans/BaseGray600";
 
 // Layout
 export { CartCardsSection } from "../layout/Cart/CartCardsSection";
